@@ -10,7 +10,7 @@ from google.genai import types
 
 def generate():
     # Initialize the client with the API key
-    client = genai.Client(api_key="AIzaSyCA7LChMskV1NZn2h3xku5RPYeyVqeSBjA")
+    client = genai.Client(api_key="gemini-key")
 
     model = "gemini-2.0-flash-lite"
 
