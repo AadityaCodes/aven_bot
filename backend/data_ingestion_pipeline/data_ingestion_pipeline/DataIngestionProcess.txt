@@ -1,0 +1,7 @@
+Process:
+1. Firecrawl: Scrapes Aven’s website (e.g., support pages, FAQs) for raw data.
+2. Preprocessing: Cleans and chunks text for embedding.
+3. Gemini Embeddings: Converts text to vectors for Pinecone storage.
+4. Pinecone: Stores embeddings for fast RAG retrieval.
+5. Vercel Cron Jobs: Schedules periodic updates to the knowledge base
+

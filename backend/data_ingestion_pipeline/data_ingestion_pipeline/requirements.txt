@@ -1,0 +1,10 @@
+firecrawl-py
+langchain-google-genai
+pinecone
+sentence-transformers
+google-genai
+flask
+flask-cors
+python-dotenv
+redis
+upstash-redis
