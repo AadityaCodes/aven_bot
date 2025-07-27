@@ -305,7 +305,7 @@ CORS(app)
 
 async def generate_response(prompt, retrieved_docs, tone='neutral'):
     try:
-        api_key = os.environ.get('GOOGLE_API_KEY', 'AIzaSyCA7LChMskV1NZn2h3xku5RPYeyVqeSBjA')
+        api_key = os.environ.get('GOOGLE_API_KEY')
         if not api_key:
             raise ValueError("GOOGLE_API_KEY is not set")
         client = genai.Client(api_key=api_key)
@@ -350,7 +350,7 @@ async def test_rag(prompt, top_k=3, user_id='default-user', tone='neutral'):
         logger.error(f"Error encoding query: {str(e)}")
         return None
     try:
-        api_key = os.environ.get('PINECONE_API_KEY', 'pcsk_35ZMWD_5Q7dfwZD6UWx7UFfzvGY1dn7gDGxL5oQosr4Q3gxQ8YcdbWHjt6RCszMvusC9kh')
+        api_key = os.environ.get('PINECONE_API_KEY'')
         if not api_key:
             raise ValueError("PINECONE_API_KEY is not set")
         pc = Pinecone(api_key=api_key)
@@ -428,7 +428,7 @@ def feedback_endpoint():
         try:
             model = SentenceTransformer('sentence-transformers/all-mpnet-base-v2')
             embedding = model.encode(response, show_progress_bar=False).tolist()
-            api_key = os.environ.get('PINECONE_API_KEY', 'pcsk_35ZMWD_5Q7dfwZD6UWx7UFfzvGY1dn7gDGxL5oQosr4Q3gxQ8YcdbWHjt6RCszMvusC9kh')
+            api_key = os.environ.get('PINECONE_API_KEY')
             pc = Pinecone(api_key=api_key)
             index = pc.Index('aven-embeddings')
             index.upsert([{'id': f'doc-{int(time.time())}', 'values': embedding, 'metadata': {'text': response, 'approved': True}}])
